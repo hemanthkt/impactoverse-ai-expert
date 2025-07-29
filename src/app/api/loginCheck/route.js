@@ -1,5 +1,6 @@
+import { User } from "@/app/lib/db";
 import dbConnect from "@/app/lib/mongodb";
-import User from "@/models/users";
+// import User from "@/models/users";
 
 export async function POST(req) {
   await dbConnect();

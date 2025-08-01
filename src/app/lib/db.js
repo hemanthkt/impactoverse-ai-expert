@@ -8,7 +8,10 @@ const UserSchema = new mongoose.Schema(
     uuid: { type: String, required: true, unique: true },
     email: { type: String, unique: true },
     username: { type: String, unique: true },
-    mentor_id: { type: String, ref: "Mentor" },
+    mentor_ids: {
+      type: [{ type: String, ref: "Mentor" }],
+      default: [],
+    },
   },
   { timestamps: true }
 );
@@ -16,7 +19,7 @@ const UserSchema = new mongoose.Schema(
 const MentorSchema = new mongoose.Schema(
   {
     user_id: { type: String, required: true, ref: "User", index: true },
-    document_id: { type: String, ref: "Document" },
+    document_ids: { type: [{ type: String, ref: "Document" }], default: [] },
     name: { type: String },
     description: { type: String },
   },
